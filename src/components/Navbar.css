@@ -2,50 +2,119 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 40px;
-  background: var(--color-bg);
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 32px;
+  background-color: var(--color-bg-primary);
+  border-bottom: 1.5px solid var(--color-border);
 }
 
 .navbar-logo {
-  font-size: 18px;
-  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
   color: var(--color-text-primary);
-  cursor: pointer;
+}
+
+.navbar-logo-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.navbar-logo-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  white-space: nowrap;
 }
 
 .navbar-login-btn {
-  background: var(--color-green);
-  color: var(--color-green-dark);
-  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 22px;
+  border: 1.5px solid var(--color-text-primary);
   border-radius: 8px;
-  padding: 9px 18px;
-  font-size: 14px;
+  background-color: #22C55E;
+  color: #0B3D1E;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.15s ease;
+  box-shadow: 3px 3px 0 var(--color-text-primary);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 
 .navbar-login-btn:hover {
-  transform: translateY(-1px);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--color-text-primary);
 }
 
+.navbar-login-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--color-text-primary);
+}
+
+/* Tablette */
 @media (max-width: 768px) {
   .navbar {
-    padding: 14px 24px;
+    padding: 14px 20px;
+  }
+
+  .navbar-logo-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .navbar-logo-text {
+    font-size: 19px;
   }
 }
 
+/* Mobile */
 @media (max-width: 480px) {
   .navbar {
     padding: 12px 16px;
   }
 
   .navbar-logo {
+    gap: 8px;
+  }
+
+  .navbar-logo-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .navbar-logo-text {
     font-size: 16px;
   }
 
   .navbar-login-btn {
-    padding: 8px 14px;
+    padding: 7px 14px;
     font-size: 13px;
+    min-height: 36px;
+    border-width: 1px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 0 var(--color-text-primary);
+  }
+
+  .navbar-login-btn:hover {
+    box-shadow: 2px 2px 0 var(--color-text-primary);
+    transform: none;
+  }
+
+  .navbar-login-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--color-text-primary);
+  }
+}
+
+/* Tres petits ecrans */
+@media (max-width: 360px) {
+  .navbar-logo-text {
+    display: none;
   }
 }
