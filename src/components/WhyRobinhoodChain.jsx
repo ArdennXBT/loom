@@ -8,11 +8,11 @@ function WhyRobinhoodChain() {
     },
     {
       title: 'Real-time data',
-      text: 'Powered by live onchain webhooks — no delayed indexing, no stale prices.',
+      text: 'Powered by live onchain webhooks no delayed indexing, no stale prices.',
     },
     {
       title: 'Made for memecoins',
-      text: 'Fresh tokens, thin liquidity, fast rugs — LoomScan is designed for exactly this kind of market.',
+      text: 'Fresh tokens, thin liquidity, fast rugs. LoomScan is designed for exactly this kind of market.',
     },
   ];
 
@@ -20,7 +20,7 @@ function WhyRobinhoodChain() {
     <div className="why-section">
       <h2 className="section-title">Why Robinhood Chain</h2>
       <p className="why-subtitle">
-        Robinhood Chain is new, fast-moving, and full of memecoins — that's exactly why it needs its own tooling.
+        Robinhood Chain is new, fast-moving, and full of memecoins; that's exactly why it needs its own tooling.
       </p>
       <div className="why-grid">
         {points.map((point) => (

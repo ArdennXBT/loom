@@ -11,7 +11,7 @@ function CtaSection() {
           Ready to trade <span className="cta-highlight">safer</span>?
         </h2>
         <p className="cta-subtitle">
-          Scan a token before you buy, or track a wallet worth copying — free, no signup required.
+          Scan a token before you buy, or track a wallet worth copying free, no signup required.
         </p>
         <div className="cta-buttons">
           <button className="btn-primary" onClick={() => navigate('/scanner')}>

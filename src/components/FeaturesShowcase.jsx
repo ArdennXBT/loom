@@ -31,7 +31,7 @@ function FeaturesShowcase() {
           <span className="feature-tag">Tracker</span>
           <h3 className="feature-title">Follow any wallet</h3>
           <p className="feature-text">
-            See every trade, PnL by period, holding time and win rate — then
+            See every trade, PnL by period, holding time and win rate then
             follow a wallet to get Telegram alerts the moment it trades.
           </p>
           <div className="feature-preview">

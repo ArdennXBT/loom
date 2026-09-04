@@ -17,7 +17,7 @@ function Hero() {
 
       <p className="hero-subtitle">
         LoomScan checks every token for rug risks and tracks any wallet's trades,
-        PnL and win rate — with instant Telegram alerts the moment it moves.
+        PnL and win rate with instant Telegram alerts the moment it moves.
       </p>
 
       <div className="hero-buttons">
@@ -31,7 +31,7 @@ function Hero() {
 
       <p className="hero-stat">
         <span className="hero-stat-dot"></span>
-        Built for Robinhood Chain — real-time onchain data
+        Built for Robinhood Chain real-time onchain data
       </p>
     </div>
   );

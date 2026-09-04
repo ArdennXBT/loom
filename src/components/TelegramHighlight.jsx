@@ -5,7 +5,7 @@ function TelegramHighlight() {
     <div className="telegram-section">
       <h2 className="section-title">Get alerted, then scan before you buy</h2>
       <p className="telegram-subtitle">
-        Follow any wallet to get an instant Telegram alert the moment it trades —
+        Follow any wallet to get an instant Telegram alert the moment it trades
         then scan the token right away to see if it's worth buying.
       </p>
 

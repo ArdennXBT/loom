@@ -358,7 +358,7 @@ function FollowWalletCard({ favorite, telegramConnected, onConnectTelegram, onSa
           ) : favorite.notify ? (
             <>
               <p className="follow-hint follow-active">
-                🔔 Following as "<strong>{favorite.nickname}</strong>" — alerts sent to Telegram.
+                🔔 Following as "<strong>{favorite.nickname}</strong>" alerts sent to Telegram.
               </p>
               <button
                 type="button"
