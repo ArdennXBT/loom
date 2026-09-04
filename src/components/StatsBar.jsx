@@ -12,7 +12,7 @@ function StatsBar() {
   return (
     <div className="stats-bar">
       {stats.map((stat) => (
-        <div className="stat-card" key={stat.label}>
+        <div className="stat-card reveal-item" key={stat.label}>
           <p className="stat-value">{stat.value}</p>
           <p className="stat-label">{stat.label}</p>
         </div>

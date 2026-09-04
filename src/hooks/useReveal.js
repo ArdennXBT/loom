@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 
 /**
  * useReveal
- * Détecte quand un élément entre dans le viewport et retourne
- * une ref à attacher + un booléen "visible" pour déclencher une
- * animation CSS (fade + translate) au scroll.
+ * Detects when an element enters the viewport and returns
+ * a ref to attach + a "visible" boolean to trigger a
+ * CSS animation (fade + translate) on scroll.
  *
- * L'animation se joue toujours au scroll (indépendamment des
- * réglages système), une seule fois par élément.
+ * The animation always plays on scroll (regardless of
+ * system settings), once per element.
  */
 function useReveal(options = {}) {
   const { threshold = 0.15, rootMargin = '0px 0px -80px 0px' } = options;

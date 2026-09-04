@@ -1,23 +1,23 @@
 .cta {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 0 40px 100px;
+  padding: 24px 40px 64px;
 }
 
 .cta-card {
   background: var(--color-text-primary);
   border-radius: 20px;
-  padding: 64px 40px;
+  padding: 48px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 16px;
+  gap: 14px;
 }
 
 .cta-title {
   color: #F1EFE8;
-  font-size: 36px;
+  font-size: 34px;
   font-weight: 700;
   margin: 0;
 }
@@ -36,7 +36,7 @@
 .cta-buttons {
   display: flex;
   gap: 12px;
-  margin-top: 12px;
+  margin-top: 8px;
 }
 
 .btn-secondary-dark {
@@ -48,44 +48,46 @@
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.btn-secondary-dark:hover {
+  border-color: #F1EFE8;
+  transform: translateY(-1px);
 }
 
 .cta-note {
   color: #888780;
   font-size: 13px;
-  margin-top: 16px;
+  margin-top: 10px;
 }
 
 @media (max-width: 768px) {
   .cta {
-    padding: 0 24px 70px;
+    padding: 20px 24px 56px;
   }
 
   .cta-card {
-    padding: 44px 28px;
+    padding: 36px 28px;
     border-radius: 16px;
   }
 
   .cta-title {
-    font-size: 28px;
-  }
-
-  .cta-subtitle {
-    font-size: 14px;
+    font-size: 26px;
   }
 }
 
 @media (max-width: 480px) {
   .cta {
-    padding: 0 16px 56px;
+    padding: 16px 16px 48px;
   }
 
   .cta-card {
-    padding: 36px 20px;
+    padding: 32px 20px;
   }
 
   .cta-title {
-    font-size: 23px;
+    font-size: 22px;
   }
 
   .cta-buttons {
@@ -97,9 +99,5 @@
   .btn-secondary-dark {
     width: 100%;
     box-sizing: border-box;
-  }
-
-  .cta-note {
-    font-size: 12px;
   }
 }

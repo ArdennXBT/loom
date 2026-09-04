@@ -1,6 +1,6 @@
 .footer {
   border-top: 1px solid var(--color-border);
-  padding: 40px;
+  padding: 28px 40px;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -10,8 +10,8 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 20px;
+  gap: 12px;
+  margin-bottom: 14px;
 }
 
 .footer-logo {
@@ -45,19 +45,19 @@
 
 @media (max-width: 768px) {
   .footer {
-    padding: 28px 24px;
+    padding: 24px;
   }
 }
 
 @media (max-width: 480px) {
   .footer {
-    padding: 24px 16px;
+    padding: 20px 16px;
   }
 
   .footer-content {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 8px;
   }
 
   .footer-copyright {

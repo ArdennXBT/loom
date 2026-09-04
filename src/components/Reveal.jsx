@@ -3,15 +3,18 @@ import './Reveal.css';
 
 /**
  * Reveal
- * Enveloppe une section et l'anime proprement (fade + léger slide)
- * quand elle entre dans le viewport au scroll.
+ * Wraps a section and animates it (fade + slide + scale)
+ * when it enters the viewport on scroll.
  *
  * Props:
- * - direction: 'up' (defaut) | 'left' | 'right' — sens du mouvement
- * - delay: délai en ms avant le déclenchement (pour un effet en cascade)
+ * - direction: 'up' | 'left' | 'right' | 'scale'
+ * - delay: delay in ms before the animation starts
  */
 function Reveal({ children, direction = 'up', delay = 0, className = '' }) {
-  const [ref, isVisible] = useReveal();
+  const [ref, isVisible] = useReveal({
+    threshold: 0.12,
+    rootMargin: '0px 0px -60px 0px',
+  });
 
   return (
     <div

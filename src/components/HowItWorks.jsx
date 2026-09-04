@@ -24,7 +24,7 @@ function HowItWorks() {
       <h2 className="section-title">How it works</h2>
       <div className="steps">
         {steps.map((step) => (
-          <div className="step" key={step.number}>
+          <div className="step reveal-item" key={step.number}>
             <div className="step-number">{step.number}</div>
             <h3 className="step-title">{step.title}</h3>
             <p className="step-text">{step.text}</p>

@@ -8,7 +8,7 @@ function FeaturesShowcase() {
     <div className="features">
       <h2 className="section-title features-title">Everything you need before you trade</h2>
       <div className="features-grid">
-        <div className="feature-card">
+        <div className="feature-card reveal-item">
           <span className="feature-tag">Scanner</span>
           <h3 className="feature-title">Know before you buy</h3>
           <p className="feature-text">
@@ -27,7 +27,7 @@ function FeaturesShowcase() {
           </button>
         </div>
 
-        <div className="feature-card">
+        <div className="feature-card reveal-item">
           <span className="feature-tag">Tracker</span>
           <h3 className="feature-title">Follow any wallet</h3>
           <p className="feature-text">

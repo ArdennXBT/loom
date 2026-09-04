@@ -24,7 +24,7 @@ function WhyRobinhoodChain() {
       </p>
       <div className="why-grid">
         {points.map((point) => (
-          <div className="why-card" key={point.title}>
+          <div className="why-card reveal-item" key={point.title}>
             <h3 className="why-card-title">{point.title}</h3>
             <p className="why-card-text">{point.text}</p>
           </div>

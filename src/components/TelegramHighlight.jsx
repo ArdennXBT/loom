@@ -10,7 +10,7 @@ function TelegramHighlight() {
       </p>
 
       <div className="telegram-grid">
-        <div className="telegram-mockup">
+        <div className="telegram-mockup reveal-item">
           <div className="telegram-header">
             <div className="telegram-avatar">LS</div>
             <div>
@@ -32,7 +32,7 @@ function TelegramHighlight() {
           </div>
         </div>
 
-        <div className="scan-mockup">
+        <div className="scan-mockup reveal-item">
           <div className="scan-mockup-header">
             <span className="scan-mockup-token">$PONS</span>
             <span className="scan-mockup-badge">Healthy</span>
