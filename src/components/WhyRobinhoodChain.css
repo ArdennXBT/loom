@@ -41,3 +41,38 @@
   line-height: 1.6;
   margin: 0;
 }
+
+@media (max-width: 768px) {
+  .why-section {
+    padding: 0 24px 70px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .why-subtitle {
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+
+  .why-grid {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .why-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-section {
+    padding: 0 16px 56px;
+  }
+
+  .why-card {
+    padding: 18px;
+    box-shadow: 4px 4px 0 var(--color-text-primary);
+  }
+}

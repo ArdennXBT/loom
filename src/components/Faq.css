@@ -32,12 +32,14 @@
   font-weight: 600;
   cursor: pointer;
   text-align: left;
+  gap: 12px;
 }
 
 .faq-icon {
   color: var(--color-green-mid);
   font-size: 18px;
   font-weight: 700;
+  flex-shrink: 0;
 }
 
 .faq-answer {
@@ -45,4 +47,33 @@
   font-size: 14px;
   line-height: 1.6;
   margin: 0 0 16px;
+}
+
+@media (max-width: 768px) {
+  .faq-section {
+    padding: 0 24px 70px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-section {
+    padding: 0 16px 56px;
+  }
+
+  .faq-item {
+    padding: 4px 16px;
+  }
+
+  .faq-question {
+    font-size: 14px;
+    padding: 14px 0;
+  }
+
+  .faq-answer {
+    font-size: 13px;
+  }
 }

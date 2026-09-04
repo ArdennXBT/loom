@@ -31,3 +31,41 @@
   text-transform: uppercase;
   margin: 0;
 }
+
+@media (max-width: 768px) {
+  .stats-bar {
+    padding: 0 24px 70px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .stat-card {
+    flex: 1 1 calc(50% - 6px);
+    padding: 20px 14px;
+  }
+
+  .stat-value {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-bar {
+    padding: 0 16px 56px;
+    gap: 10px;
+  }
+
+  .stat-card {
+    flex: 1 1 calc(50% - 5px);
+    padding: 16px 10px;
+    box-shadow: 3px 3px 0 var(--color-text-primary);
+  }
+
+  .stat-value {
+    font-size: 22px;
+  }
+
+  .stat-label {
+    font-size: 10.5px;
+  }
+}

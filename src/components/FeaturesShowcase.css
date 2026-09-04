@@ -97,3 +97,46 @@
 .preview-score-good {
   color: var(--color-green-mid);
 }
+
+@media (max-width: 768px) {
+  .features {
+    padding: 0 24px 70px;
+  }
+
+  .features-title {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .features-grid {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .feature-card {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .features {
+    padding: 0 16px 56px;
+  }
+
+  .features-title {
+    font-size: 21px;
+  }
+
+  .feature-card {
+    padding: 18px;
+    box-shadow: 4px 4px 0 var(--color-text-primary);
+  }
+
+  .feature-title {
+    font-size: 18px;
+  }
+
+  .preview-score {
+    font-size: 24px;
+  }
+}

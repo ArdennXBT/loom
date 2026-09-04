@@ -191,3 +191,50 @@
   margin: 0;
   text-align: center;
 }
+
+@media (max-width: 860px) {
+  .telegram-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .telegram-mockup,
+  .scan-mockup {
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 768px) {
+  .telegram-section {
+    padding: 0 24px 70px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .telegram-subtitle {
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .telegram-section {
+    padding: 0 16px 56px;
+  }
+
+  .telegram-mockup,
+  .scan-mockup {
+    padding: 16px;
+    box-shadow: 4px 4px 0 var(--color-text-primary);
+  }
+
+  .scan-mockup-score {
+    font-size: 32px;
+  }
+
+  .telegram-message-token {
+    font-size: 18px;
+  }
+}

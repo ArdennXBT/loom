@@ -91,3 +91,55 @@
   border-radius: 50%;
   background: var(--color-green);
 }
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 70px 24px 60px;
+    gap: 18px;
+  }
+
+  .hero-title {
+    font-size: 34px;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 56px 18px 48px;
+    gap: 16px;
+  }
+
+  .hero-badge {
+    font-size: 12px;
+    padding: 7px 14px;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 27px;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 20px;
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+}

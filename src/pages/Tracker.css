@@ -15,3 +15,17 @@
   font-size: 14px;
   margin: 0;
 }
+
+@media (max-width: 480px) {
+  .tracker {
+    padding: 24px 16px;
+  }
+
+  .tracker-title {
+    font-size: 20px;
+  }
+
+  .tracker-subtitle {
+    font-size: 13px;
+  }
+}

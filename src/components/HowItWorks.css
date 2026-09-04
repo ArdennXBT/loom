@@ -47,3 +47,46 @@
   line-height: 1.6;
   margin: 0;
 }
+
+@media (max-width: 768px) {
+  .how-it-works {
+    padding: 30px 24px 70px;
+  }
+
+  .section-title {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .steps {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .step {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .how-it-works {
+    padding: 24px 16px 56px;
+  }
+
+  .section-title {
+    font-size: 21px;
+  }
+
+  .step {
+    padding: 18px;
+    box-shadow: 4px 4px 0 var(--color-text-primary);
+  }
+
+  .step-number {
+    font-size: 26px;
+  }
+
+  .step-title {
+    font-size: 16px;
+  }
+}

@@ -3,10 +3,10 @@ import './StatsBar.css';
 function StatsBar() {
   // Placeholder values — replace with real data once the backend is live
   const stats = [
-    { value: '0', label: 'Tokens scanned' },
-    { value: '0', label: 'Wallets tracked' },
-    { value: '0', label: 'Rugs flagged' },
-    { value: '0', label: 'Alerts sent · 24h' },
+    { value: '80', label: 'Tokens scanned' },
+    { value: '13', label: 'Wallets tracked' },
+    { value: '27', label: 'Rugs flagged' },
+    { value: '14', label: 'Alerts sent · 24h' },
   ];
 
   return (
