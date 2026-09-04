@@ -1,0 +1,17 @@
+.scanner {
+  min-height: 100vh;
+  padding: 40px;
+  background: var(--color-bg);
+}
+
+.scanner-title {
+  color: var(--color-text-primary);
+  font-size: 24px;
+  margin: 0 0 8px;
+}
+
+.scanner-subtitle {
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  margin: 0;
+}

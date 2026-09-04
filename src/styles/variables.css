@@ -1,0 +1,17 @@
+:root {
+  --color-bg: #DDDAD1;
+  --color-card-bg: #F1EFE8;
+  --color-text-primary: #141310;
+  --color-text-secondary: #5F5E5A;
+  --color-border: #E2E0D8;
+
+  --color-green: #22C55E;
+  --color-green-dark: #0B3D1E;
+  --color-green-mid: #15803D;
+
+  --color-red: #EF4444;
+  --color-red-dark: #450A0A;
+  --color-red-mid: #DC2626;
+
+  --color-amber: #D97706;
+}

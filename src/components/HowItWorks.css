@@ -1,0 +1,49 @@
+.how-it-works {
+  padding: 40px 40px 100px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-title {
+  color: var(--color-text-primary);
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 32px;
+}
+
+.steps {
+  display: flex;
+  gap: 24px;
+  text-align: left;
+}
+
+.step {
+  flex: 1;
+  background: var(--color-card-bg);
+  border: 1.5px solid var(--color-text-primary);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 5px 5px 0 var(--color-text-primary);
+}
+
+.step-number {
+  color: var(--color-green-mid);
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.step-title {
+  color: var(--color-text-primary);
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.step-text {
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}

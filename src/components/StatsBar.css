@@ -1,0 +1,33 @@
+.stats-bar {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 40px 100px;
+  display: flex;
+  gap: 16px;
+}
+
+.stat-card {
+  flex: 1;
+  background: var(--color-card-bg);
+  border: 1.5px solid var(--color-text-primary);
+  border-radius: 14px;
+  box-shadow: 4px 4px 0 var(--color-text-primary);
+  padding: 24px 20px;
+  text-align: center;
+}
+
+.stat-value {
+  color: var(--color-green-mid);
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  font-family: monospace;
+}
+
+.stat-label {
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin: 0;
+}

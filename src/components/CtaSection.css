@@ -1,0 +1,57 @@
+.cta {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 40px 100px;
+}
+
+.cta-card {
+  background: var(--color-text-primary);
+  border-radius: 20px;
+  padding: 64px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.cta-title {
+  color: #F1EFE8;
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.cta-highlight {
+  color: var(--color-green);
+}
+
+.cta-subtitle {
+  color: #B4B2A9;
+  font-size: 15px;
+  max-width: 460px;
+  margin: 0;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.btn-secondary-dark {
+  background: transparent;
+  color: #F1EFE8;
+  border: 1px solid #444441;
+  border-radius: 10px;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cta-note {
+  color: #888780;
+  font-size: 13px;
+  margin-top: 16px;
+}
