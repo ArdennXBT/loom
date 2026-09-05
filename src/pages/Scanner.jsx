@@ -3,71 +3,6 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './Scanner.css';
 
-// TODO: remplacer par un vrai appel à src/services/api.js une fois
-// Alchemy + le service honeypot (GoPlus/Honeypot.is) branchés côté backend.
-function getMockScanResult(address) {
-  return {
-    address,
-    tokenName: 'SafeMoonshot',
-    tokenSymbol: 'SAFE',
-    score: 87,
-    verdict: 'safe', // 'safe' | 'warning' | 'danger'
-    // null = réseau non renseigné par le déployeur, ne pas l'afficher
-    socials: {
-      website: 'https://safemoonshot.io',
-      twitter: 'https://twitter.com/safemoonshot',
-      telegram: null,
-      discord: null,
-    },
-    categories: [
-      {
-        title: 'Fatal',
-        checks: [
-          { label: 'No honeypot detected', status: 'pass' },
-          { label: 'Buy/sell tax under 5%', status: 'pass' },
-          { label: 'No active mint function', status: 'pass' },
-          { label: 'No blacklist/freeze function', status: 'pass' },
-        ],
-      },
-      {
-        title: 'Structural',
-        checks: [
-          { label: 'Ownership renounced', status: 'pass' },
-          { label: 'Contract verified', status: 'pass' },
-          { label: 'Not upgradeable (no proxy)', status: 'pass' },
-          { label: 'Deployer has clean history', status: 'warning' },
-        ],
-      },
-      {
-        title: 'Liquidity',
-        checks: [
-          { label: 'Liquidity locked', status: 'pass' },
-          { label: 'Lock duration: 180 days', status: 'pass' },
-          { label: 'Locked amount: 92%', status: 'pass' },
-        ],
-      },
-      {
-        title: 'Holder concentration',
-        checks: [
-          { label: 'Top 1 holder: 4.2%', status: 'pass' },
-          { label: 'Top 10 holders: 18.6%', status: 'pass' },
-          { label: 'No bundled wallets detected', status: 'pass' },
-          { label: 'Deployer holds 1.1%', status: 'pass' },
-        ],
-      },
-      {
-        title: 'Positive signals',
-        checks: [
-          { label: '2,340 holders, growing', status: 'pass' },
-          { label: 'Buyer/seller ratio: 1.3', status: 'pass' },
-          { label: 'Token age: 14 days', status: 'warning' },
-          { label: 'Consistent volume', status: 'pass' },
-        ],
-      },
-    ],
-  };
-}
-
 function verdictLabel(verdict) {
   if (verdict === 'safe') return 'Looks safe';
   if (verdict === 'warning') return 'Use caution';
@@ -78,6 +13,11 @@ function StatusIcon({ status }) {
   if (status === 'pass') return <span className="check-icon pass">✓</span>;
   if (status === 'warning') return <span className="check-icon warning">!</span>;
   return <span className="check-icon fail">✕</span>;
+}
+
+function truncateAddress(addr) {
+  if (!addr) return '';
+  return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
 }
 
 const SOCIAL_META = {
@@ -118,7 +58,6 @@ const SOCIAL_META = {
 
 function SocialLinks({ socials }) {
   const entries = Object.entries(socials || {}).filter(([, url]) => Boolean(url));
-
   if (entries.length === 0) return null;
 
   return (
@@ -151,8 +90,9 @@ function Scanner() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
+  const [copied, setCopied] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const trimmed = address.trim();
 
@@ -161,15 +101,42 @@ function Scanner() {
       return;
     }
 
+    if (!/^0x[a-fA-F0-9]{40}$/i.test(trimmed)) {
+      setError('Invalid contract address.');
+      return;
+    }
+
     setError('');
     setLoading(true);
     setResult(null);
 
-    // Simule le temps de réponse d'un vrai scan backend
-    setTimeout(() => {
-      setResult(getMockScanResult(trimmed));
+    try {
+      const res = await fetch(`http://localhost:4000/scanner/${trimmed}`);
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Scan failed');
+      }
+
+      setResult(data);
+    } catch (err) {
+      setError(err.message || 'Something went wrong while scanning.');
+    } finally {
       setLoading(false);
-    }, 900);
+    }
+  };
+
+  const handleCopy = () => {
+    if (!result?.address) return;
+    navigator.clipboard.writeText(result.address);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+
+  const handleReset = () => {
+    setResult(null);
+    setAddress('');
+    setError('');
   };
 
   return (
@@ -177,59 +144,110 @@ function Scanner() {
       <Navbar />
 
       <main className="scanner">
-        <h1 className="scanner-title">Scan a token</h1>
-        <p className="scanner-subtitle">
-          Paste a token contract address on Robinhood Chain to see its safety score.
-        </p>
+        <div className="scanner-header">
+          <h1 className="scanner-title">Scan a token</h1>
+          <p className="scanner-subtitle">
+            Paste a token contract address on Robinhood Chain to get a full security analysis.
+          </p>
+        </div>
 
         <form className="scanner-form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            className="scanner-input"
-            placeholder="0x..."
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
-          <button type="submit" className="scanner-submit" disabled={loading}>
-            {loading ? 'Scanning...' : 'Scan'}
-          </button>
+          <div className="input-wrapper">
+            <input
+              type="text"
+              className="scanner-input"
+              placeholder="0x..."
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              disabled={loading}
+            />
+            <button type="submit" className="scanner-submit" disabled={loading}>
+              {loading ? (
+                <span className="spinner"></span>
+              ) : (
+                'Scan'
+              )}
+            </button>
+          </div>
         </form>
 
         {error && <p className="scanner-error">{error}</p>}
 
         {loading && (
-          <p className="scanner-loading">Analyzing contract, liquidity and holders...</p>
+          <div className="scanner-loading-box">
+            <div className="spinner large"></div>
+            <p>Analyzing contract, liquidity & holders...</p>
+          </div>
         )}
 
         {result && !loading && (
           <div className="scanner-result">
+            {/* Score Card */}
             <div className={`score-card verdict-${result.verdict}`}>
-              <div className="score-card-token">
-                <span className="score-card-symbol">${result.tokenSymbol}</span>
-                <span className="score-card-name">{result.tokenName}</span>
+              <div className="score-card-top">
+                <div className="score-card-token">
+                  <span className="score-card-symbol">${result.tokenSymbol}</span>
+                  <span className="score-card-name">{result.tokenName}</span>
+                </div>
+                <div className="chain-badge">Robinhood Chain</div>
               </div>
-              <div className="score-card-number">{result.score}</div>
-              <div className="score-card-out-of">/ 100</div>
-              <div className={`score-card-badge verdict-${result.verdict}`}>
+
+              <div className="score-main">
+                <div className="score-number">{result.score}</div>
+                <div className="score-out-of">/ 100</div>
+              </div>
+
+              <div className={`score-badge verdict-${result.verdict}`}>
                 {verdictLabel(result.verdict)}
+              </div>
+
+              <div className="score-address-row">
+                <span className="score-address">{truncateAddress(result.address)}</span>
+                <button type="button" className="copy-btn" onClick={handleCopy}>
+                  {copied ? 'Copied!' : 'Copy'}
+                </button>
+                <a
+                  href={`https://robinhoodchain.blockscout.com/address/${result.address}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="explorer-link"
+                >
+                  Explorer ↗
+                </a>
               </div>
             </div>
 
+            {/* Categories */}
             <div className="category-grid">
-              {result.categories.map((category) => (
-                <div className="category-card" key={category.title}>
-                  <h3 className="category-title">{category.title}</h3>
-                  <ul className="category-checks">
-                    {category.checks.map((check) => (
-                      <li className="category-check" key={check.label}>
-                        <StatusIcon status={check.status} />
-                        <span>{check.label}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+              {result.categories?.map((category) => {
+                const passCount = category.checks.filter(c => c.status === 'pass').length;
+                const total = category.checks.length;
+
+                return (
+                  <div className="category-card" key={category.title}>
+                    <div className="category-header">
+                      <h3 className="category-title">{category.title}</h3>
+                      <span className="category-count">{passCount}/{total}</span>
+                    </div>
+                    <ul className="category-checks">
+                      {category.checks.map((check) => (
+                        <li className="category-check" key={check.label}>
+                          <StatusIcon status={check.status} />
+                          <span>{check.label}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
+
               <SocialLinks socials={result.socials} />
+            </div>
+
+            <div className="result-actions">
+              <button type="button" className="scan-another-btn" onClick={handleReset}>
+                Scan another token
+              </button>
             </div>
           </div>
         )}
