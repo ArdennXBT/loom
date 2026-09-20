@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './Scanner.css';
+
 const API_BASE = 'https://loomscan-server.onrender.com';
 
 function verdictLabel(verdict) {
@@ -96,7 +97,6 @@ function Scanner() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const trimmed = address.trim();
-    const res = await fetch(`${API_BASE}/scanner/${trimmed}`);
 
     if (!trimmed) {
       setError('Paste a contract address to scan.');
@@ -113,8 +113,9 @@ function Scanner() {
     setResult(null);
 
     try {
-      const res = await fetch(`https://loomscan-server.onrender.com/scanner/${trimmed}`);
+      const res = await fetch(`${API_BASE}/scanner/${trimmed}`);
       const data = await res.json();
+
       if (!res.ok) {
         throw new Error(data.error || 'Scan failed');
       }
@@ -163,11 +164,7 @@ function Scanner() {
               disabled={loading}
             />
             <button type="submit" className="scanner-submit" disabled={loading}>
-              {loading ? (
-                <span className="spinner"></span>
-              ) : (
-                'Scan'
-              )}
+              {loading ? <span className="spinner"></span> : 'Scan'}
             </button>
           </div>
         </form>
@@ -221,14 +218,16 @@ function Scanner() {
             {/* Categories */}
             <div className="category-grid">
               {result.categories?.map((category) => {
-                const passCount = category.checks.filter(c => c.status === 'pass').length;
+                const passCount = category.checks.filter((c) => c.status === 'pass').length;
                 const total = category.checks.length;
 
                 return (
                   <div className="category-card" key={category.title}>
                     <div className="category-header">
                       <h3 className="category-title">{category.title}</h3>
-                      <span className="category-count">{passCount}/{total}</span>
+                      <span className="category-count">
+                        {passCount}/{total}
+                      </span>
                     </div>
                     <ul className="category-checks">
                       {category.checks.map((check) => (
