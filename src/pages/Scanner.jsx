@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './Scanner.css';
+const API_BASE = 'https://loomscan-server.onrender.com';
 
 function verdictLabel(verdict) {
   if (verdict === 'safe') return 'Looks safe';
@@ -95,6 +96,7 @@ function Scanner() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const trimmed = address.trim();
+    const res = await fetch(`${API_BASE}/scanner/${trimmed}`);
 
     if (!trimmed) {
       setError('Paste a contract address to scan.');
@@ -111,9 +113,8 @@ function Scanner() {
     setResult(null);
 
     try {
-      const res = await fetch(`http://localhost:4000/scanner/${trimmed}`);
+      const res = await fetch(`https://loomscan-server.onrender.com/scanner/${trimmed}`);
       const data = await res.json();
-
       if (!res.ok) {
         throw new Error(data.error || 'Scan failed');
       }
