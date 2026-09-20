@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
@@ -26,6 +27,17 @@ function LogoMark() {
 }
 
 function Navbar() {
+  const [showMessage, setShowMessage] = useState(false);
+
+  const handleLoginClick = () => {
+    setShowMessage(true);
+
+    // Cache le message après 3 secondes
+    setTimeout(() => {
+      setShowMessage(false);
+    }, 3000);
+  };
+
   return (
     <header className="navbar">
       <Link to="/" className="navbar-logo" aria-label="LoomScan home">
@@ -33,9 +45,21 @@ function Navbar() {
         <span className="navbar-logo-text">LoomScan</span>
       </Link>
 
-      <button type="button" className="navbar-login-btn">
-        Login
-      </button>
+      <div className="navbar-right">
+        {showMessage && (
+          <div className="login-coming-soon">
+            Login coming soon
+          </div>
+        )}
+
+        <button
+          type="button"
+          className="navbar-login-btn"
+          onClick={handleLoginClick}
+        >
+          Login
+        </button>
+      </div>
     </header>
   );
 }
