@@ -5,7 +5,6 @@ import './Tracker.css';
 
 const FAVORITES_KEY = 'loomscan_favorite_wallets';
 const TELEGRAM_KEY = 'loomscan_telegram_connected';
-const API_BASE = 'http://localhost:4000';
 
 const PERIODS = [
   { key: 'today', label: '24H' },
@@ -99,20 +98,11 @@ function Tracker() {
     setLoading(true);
     setData(null);
 
-    try {
-      const res = await fetch(`${API_BASE}/tracker/${trimmed}`);
-      const json = await res.json();
-
-      if (!res.ok) {
-        throw new Error(json.error || 'Failed to fetch wallet');
-      }
-
-      setData(json);
-    } catch (err) {
-      setError(err.message || 'Something went wrong');
-    } finally {
+    // Simule un petit chargement puis affiche le message
+    setTimeout(() => {
       setLoading(false);
-    }
+      setError('Wallet Tracker is still under construction. Real data coming soon.');
+    }, 900);
   };
 
   const handleSubmit = (e) => {
@@ -201,6 +191,15 @@ function Tracker() {
           </button>
         </form>
 
+        {/* Banner Coming Soon */}
+        <div className="coming-soon-banner">
+          <span className="coming-soon-icon">🚧</span>
+          <div className="coming-soon-text">
+            <strong>Wallet Tracker is under construction</strong>
+            <p>Real-time tracking & PnL will be available soon.</p>
+          </div>
+        </div>
+
         {error && <p className="tracker-error">{error}</p>}
 
         {loading && (
@@ -212,7 +211,6 @@ function Tracker() {
 
         {data && !loading && (
           <>
-            {/* Wallet Summary Card */}
             <div className="wallet-card">
               <div className="wallet-card-top">
                 <span className="wallet-address">{truncateAddress(data.address)}</span>
@@ -256,7 +254,6 @@ function Tracker() {
               </div>
             </div>
 
-            {/* Follow Section */}
             <div className="follow-card">
               <h3>Follow this wallet</h3>
 
@@ -311,7 +308,6 @@ function Tracker() {
               </div>
             </div>
 
-            {/* Tokens List */}
             <div className="tokens-section">
               <h3>Positions</h3>
 
